@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        main{padding:2rem}
+        .center{display:flex;flex-direction:column;align-items:center;justify-content:center;height:70vh}
+        .btn{padding:.5rem 1rem;border-radius:6px;background:var(--color-primary);color:#fff;border:none;cursor:pointer}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./images/logo.png" alt="">
+            <h2>M<span class="danger">M</span>I S</h2>
+        </div>
+    </header>
+    <main>
+        <div class="center">
+            <h1 id="welcome">Welcome</h1>
+            <p id="sub">This is your personal dashboard.</p>
+            <button id="logout" class="btn">Logout</button>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = localStorage.getItem('sd_session');
+            if (!user) {
+                // no session, redirect to home
+                window.location.href = 'index.html';
+                return;
+            }
+            const users = JSON.parse(localStorage.getItem('sd_users') || '{}');
+            const u = users[user];
+            document.getElementById('welcome').textContent = u && u.name ? `Welcome, ${u.name}` : `Welcome, ${user}`;
+
+            document.getElementById('logout').addEventListener('click', () => {
+                localStorage.removeItem('sd_session');
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>
