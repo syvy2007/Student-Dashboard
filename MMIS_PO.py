@@ -146,7 +146,7 @@ class LoginScreen(tk.Tk):
         self.username_entry.focus_set()
 
    
-    # LOGIN LOGIC (UPDATED)
+    # LOGIN LOGIC 
     def login(self, event=None):
         username = self.username_entry.get().strip()
         password = self.password_entry.get()
@@ -162,7 +162,7 @@ class LoginScreen(tk.Tk):
             display = user.get("name", username)
             messagebox.showinfo("Login Success", f"Welcome, {display} ({role})")
 
-            # Pass user info to dashboard (store session next to app)
+            # Pass user info to dashboard 
             try:
                 session_file = USER_DIR / 'session.json'
                 with open(session_file, 'w', encoding='utf-8') as f:
@@ -193,7 +193,7 @@ class LoginScreen(tk.Tk):
 
 
 
-# REGISTER WINDOW (UPDATED)
+# REGISTER WINDOW 
 class RegisterWindow(tk.Toplevel):
     def __init__(self, parent):
         super().__init__(parent)
@@ -269,7 +269,7 @@ class RegisterWindow(tk.Toplevel):
         self.destroy()
 
 
-# ==================================================================================================================================
+
 if __name__ == "__main__":
     app = LoginScreen()
     app.mainloop()
