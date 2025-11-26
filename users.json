@@ -1,7 +1,12 @@
 {
-  "Villadolid": "12345",
-  "Lumanta": "876543",
-  "Son": "123344",
-  "sysysy": "123456",
-  "princess": "123456"
+  "villadolid": {
+    "name": "Princess Villadolid",
+    "password": "password123",
+    "role": "Admin"
+  },
+  "lumanta": {
+    "name": "Alexis Lumanta",
+    "password": "7a047a30e0938683b737a8501eaa486f$100000$85dd551cc07de7659abeca8d33b5d02abb9e5af59adef707284eac4bd0c3261b",
+    "role": "student"
+  }
 }

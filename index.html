@@ -9,6 +9,47 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
+<script>
+/* ============================
+   LOAD USER SESSION DATA
+=============================*/
+fetch("session.json")
+  .then(response => response.json())
+  .then(data => {
+
+    // Top greeting (Hey, NAME)
+    document.querySelector(".info b").innerText = data.user;
+
+    // Role display (replace ID area)
+    document.querySelector(".text-muted").innerText = data.role.toUpperCase();
+
+    // Restrict Register page for non-admins
+    if (data.role !== "admin") {
+      const links = document.querySelectorAll(".navbar a");
+      links.forEach(link => {
+        if (link.innerText.includes("Register")) {
+          link.style.display = "none";
+        }
+      });
+    }
+
+  })
+  .catch(() => {
+    alert("Session expired. Please login again.");
+    window.location.href = "login.html";
+  });
+
+
+/* ============================
+   LOGOUT FUNCTION
+=============================*/
+function logout() {
+  window.open('', '_self', '');
+  window.close();
+}
+</script>
+
 <body>
     <header>
         <div class="logo" title="MMIS">
